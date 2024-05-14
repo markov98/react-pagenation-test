@@ -22,7 +22,8 @@ export function Comments() {
 
     const currComents = allComments.slice(firstIndex, lastIndex);
 
-    const nextPage = () => { setCurrPage(currPage + 1) }
+    const nextPage = () => { setCurrPage(currPage + 1) };
+    const lastPage = () => { setCurrPage(currPage - 1) }
 
     return (
         <>
@@ -36,7 +37,9 @@ export function Comments() {
                 })}
             </ul>
             <div className="pages">
-                <button onClick={nextPage}>Next Page</button>
+                <button onClick={lastPage}>{'<'}</button>
+                <span>{currPage}</span>
+                <button onClick={nextPage}>{'>'}</button>
             </div>
         </>
     )
