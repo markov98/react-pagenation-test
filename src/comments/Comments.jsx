@@ -1,4 +1,5 @@
 import { useState } from "react";
+import './Comments.css';
 
 export function Comments() {
     const allComments = [
@@ -31,8 +32,8 @@ export function Comments() {
             <ul>
                 {currComents.map(comment => {
                     return <li key={comment.id}>
-                        <p>{comment.username}</p>
-                        <p>{comment.comment}</p>
+                        <p className="username">{comment.username}</p>
+                        <p className="commenents_text">{comment.comment}</p>
                     </li>
                 })}
             </ul>
