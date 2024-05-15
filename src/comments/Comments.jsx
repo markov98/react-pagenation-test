@@ -24,7 +24,7 @@ export function Comments() {
     const currComents = allComments.slice(firstIndex, lastIndex);
 
     const nextPage = () => { setCurrPage(currPage + 1) };
-    const lastPage = () => { setCurrPage(currPage - 1) }
+    const lastPage = () => { setCurrPage(currPage - 1) };
 
     return (
         <>
@@ -33,14 +33,14 @@ export function Comments() {
                 {currComents.map(comment => {
                     return <li key={comment.id}>
                         <p className="username">{comment.username}</p>
-                        <p className="commenents_text">{comment.comment}</p>
+                        <p className="comments_text">{comment.comment}</p>
                     </li>
                 })}
             </ul>
             <div className="pages">
-                <button onClick={lastPage}>{'<'}</button>
+                <button onClick={lastPage} disabled={currPage === 1}>{'<'}</button>
                 <span>{currPage}</span>
-                <button onClick={nextPage}>{'>'}</button>
+                <button onClick={nextPage} disabled={lastIndex >= allComments.length}>{'>'}</button>
             </div>
         </>
     )
