@@ -38,9 +38,9 @@ export function Comments() {
                 })}
             </ul>
             <div className="pages">
-                <button onClick={lastPage} disabled={currPage === 1}>{'<'}</button>
+                {currPage > 1 && <><a onClick={lastPage}>{currPage - 1}</a> | </>}
                 <span>{currPage}</span>
-                <button onClick={nextPage} disabled={lastIndex >= allComments.length}>{'>'}</button>
+                {lastIndex < allComments.length && <> | <a onClick={nextPage}>{currPage + 1}</a></>}
             </div>
         </>
     )
