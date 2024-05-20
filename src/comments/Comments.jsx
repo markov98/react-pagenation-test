@@ -1,18 +1,17 @@
-import { useState } from "react";
+import { Link } from "react-router-dom";
 import { allComments } from "./data";
 import './Comments.css';
+import { useParams } from "react-router-dom";
 
 export function Comments() {
-    const [currPage, setCurrPage] = useState(1);
+    const { num } = useParams();
+    const currPage = Number(num) || 1;
     const commentsPerPage = 3;
 
     const lastIndex = currPage * commentsPerPage;
     const firstIndex = lastIndex - commentsPerPage;
 
     const currComents = allComments.slice(firstIndex, lastIndex);
-
-    const nextPage = () => { setCurrPage(currPage + 1) };
-    const lastPage = () => { setCurrPage(currPage - 1) };
 
     return (
         <>
@@ -26,9 +25,9 @@ export function Comments() {
                 })}
             </ul>
             <div className="pages">
-                {currPage > 1 && <><a onClick={lastPage}>{currPage - 1}</a> | </>}
+                {currPage > 1 && <><Link to={`/${currPage - 1}`}>{currPage - 1}</Link> | </>}
                 <span>{currPage}</span>
-                {lastIndex < allComments.length && <> | <a onClick={nextPage}>{currPage + 1}</a></>}
+                {lastIndex < allComments.length && <> | <Link to={`/${currPage + 1}`}>{currPage + 1}</Link></>}
             </div>
         </>
     )
