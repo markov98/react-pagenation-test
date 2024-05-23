@@ -28,6 +28,7 @@ export function Comments() {
                 {currPage > 1 && <><Link to={`/${currPage - 1}`}>{currPage - 1}</Link> | </>}
                 <span>{currPage}</span>
                 {lastIndex < allComments.length && <> | <Link to={`/${currPage + 1}`}>{currPage + 1}</Link></>}
+                {lastIndex + commentsPerPage < allComments.length && <> | <Link to={`/${currPage + 2}`}>{currPage + 2}</Link></>}
             </div>
         </>
     )
